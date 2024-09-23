@@ -229,3 +229,68 @@ int main() {
 ***
 **
 *
+------------------------------------------------------------
+//pattern11
+#include <iostream>
+using namespace std;
+
+void p11(int n){
+    int start = 1;
+    for(int i = 0; i < n; i++){
+        if(i % 2 == 0) start = 1;
+        else start = 0;
+        for(int j = 0; j <= i ; j++){
+            cout << start << " ";
+            start = 1 - start;
+        }
+        cout << endl;
+    }
+}
+int main() {
+    int n;
+    cin >> n;
+    p11(n);
+    return 0;
+}
+//output
+1 
+0 1 
+1 0 1 
+0 1 0 1 
+1 0 1 0 1 
+------------------------------------------------------------
+//pattern12
+#include <iostream>
+using namespace std;
+
+void p12(int n){
+    int space = 2* (n-1);
+    for(int i = 1; i <= n; i++){
+        
+        for(int j = 1; j <= i ; j++){
+            cout << j;
+        }
+        for(int j = 1; j <= space; j++){
+            cout << " ";
+        }
+        for(int j = i; j >= 1; j--){
+            cout << j;
+        }
+        cout << endl;
+        space -= 2;
+    }
+}
+int main() {
+    int n;
+    cin >> n;
+    p12(n);
+    return 0;
+}
+//output
+1        1
+12      21
+123    321
+1234  4321
+1234554321
+------------------------------------------------------------
+//pattern13
