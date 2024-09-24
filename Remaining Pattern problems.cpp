@@ -294,3 +294,319 @@ int main() {
 1234554321
 ------------------------------------------------------------
 //pattern13
+#include <iostream>
+using namespace std;
+
+void p13(int n){
+    int num = 1;
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= i; j++){
+            cout << num << " ";
+            num = num + 1;
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    p13(n);
+    return 0;
+}
+//output
+1 
+2 3 
+4 5 6 
+7 8 9 10 
+11 12 13 14 15
+------------------------------------------------------------
+//pattern14
+#include <iostream>
+using namespace std;
+
+void p14(int n){
+    for(int i = 0; i < n; i++){
+        for(char ch = 'A'; ch <= 'A' + i; ch++){
+            cout << ch << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    p14(n);
+    return 0;
+}
+//output
+A 
+A B 
+A B C 
+A B C D 
+A B C D E
+------------------------------------------------------------
+//pattern15
+#include <iostream>
+using namespace std;
+
+void p15(int n){
+    for(int i = 0; i < n; i++){
+        for(char ch = 'A'; ch <= 'A' + (n - i - 1) ; ch++){
+            cout << ch << " "; 
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    p15(n);
+    return 0;
+}
+//output
+A B C D E 
+A B C D 
+A B C 
+A B 
+A
+------------------------------------------------------------
+//pattern16
+#include <iostream>
+using namespace std;
+
+void p16(int n){
+    for(int i = 0; i < n; i++){
+        char ch = 'A' + i;
+        for(int j = 0; j <= i; j++){
+            cout << ch << " "; 
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    p16(n);
+    return 0;
+}
+//output
+A 
+B B 
+C C C 
+D D D D 
+E E E E E
+------------------------------------------------------------
+//pattern17
+#include <iostream>
+using namespace std;
+
+void p17(int n){
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n - i - 1; j++){
+            cout << " ";
+        }
+        char ch = 'A';
+        int breakpoint = (2 * i + 1) / 2;
+        for(int j = 1; j <= 2 * i + 1; j++){
+            cout << ch;
+            if(j <= breakpoint) ch++;
+            else ch--;
+        }for(int j = 0; j < n - i - 1; j++){
+            cout << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    p17(n);
+    return 0;
+}
+//output
+    A    
+   ABA   
+  ABCBA  
+ ABCDCBA 
+ABCDEDCBA
+------------------------------------------------------------
+//pattern18
+#include <iostream>
+using namespace std;
+void p18(int n){
+    for(int i = 0; i < n; i++){
+        char ch = 'A';
+        ch = ch + (n-i -1);
+        for(int j = 0; j <= i; j++){
+            cout << ch << " ";
+            ch++;
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    p18(n);
+    return 0;
+}
+//output
+E 
+D E 
+C D E 
+B C D E 
+A B C D E
+------------------------------------------------------------
+//pattern19
+#include <iostream>
+using namespace std;
+
+void p19(int n){
+    int iniS = 0;
+    for(int i = 0; i < n; i++){
+        for(int j = 1; j <= n - i; j++){
+            cout << "*";
+        }for(int j = 0; j < iniS; j++){
+            cout << " ";
+        }for(int j = 1; j <= n - i; j++){
+            cout << "*";
+        }
+        iniS += 2;
+        cout << endl;
+    }
+    iniS = 2*n - 2;
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= i; j++){
+            cout << "*";
+        }for(int j = 0; j < iniS; j++){
+            cout << " ";
+        }for(int j = 1; j <= i; j++){
+            cout << "*";
+        }
+        iniS -= 2;
+        cout << endl;
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    p19(n);
+    return 0;
+}
+//output
+**********
+****  ****
+***    ***
+**      **
+*        *
+*        *
+**      **
+***    ***
+****  ****
+**********
+------------------------------------------------------------
+//pattern20
+#include <iostream>
+using namespace std;
+
+void p20(int n){
+    int spaces = 2*n - 2;
+    for(int i = 1; i <= 2*n - 1; i++){
+        int stars = i;
+        if(i > n) stars = 2*n - i; 
+        for(int j = 1; j <= stars; j++){
+            cout << "*";
+        }for(int j = 1; j <= spaces; j++){
+            cout << " ";
+        }for(int j = 1; j <= stars; j++){
+            cout << "*";
+        }
+        cout << endl;
+        if(i < n) spaces -= 2;
+        else spaces += 2;
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    p20(n);
+    return 0;
+}
+//output
+*        *
+**      **
+***    ***
+****  ****
+**********
+****  ****
+***    ***
+**      **
+*        *
+------------------------------------------------------------
+//pattern21
+#include <iostream>
+using namespace std;
+
+void p21(int n){
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            if(i == 0 || j == 0 || i == n-1 || j == n-1){
+            cout << "*";
+        }
+        else cout << " ";
+    }
+    cout << endl;
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    p21(n);
+    return 0;
+}
+//output
+****
+*  *
+*  *
+****
+------------------------------------------------------------
+//pattern22
+#include <iostream>
+using namespace std;
+
+void p22(int n){
+    for(int i = 0; i <2*n-1; i++){
+        for(int j = 0; j <2*n-1; j++){
+            int top = i;
+            int left = j;
+            int right = (2*n - 2) - j;
+            int down = (2*n - 2) - i;
+            cout << (n - min(min(top, down), min(left, right))) << " ";
+        }
+    cout << endl;
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    p22(n);
+    return 0;
+}
+//output
+4 4 4 4 4 4 4 
+4 3 3 3 3 3 4 
+4 3 2 2 2 3 4 
+4 3 2 1 2 3 4 
+4 3 2 2 2 3 4 
+4 3 3 3 3 3 4 
+4 4 4 4 4 4 4 
